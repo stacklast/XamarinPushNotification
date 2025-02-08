@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "710403014607",
+    "project_id": "pushnotification-b55bc",
+    "storage_bucket": "pushnotification-b55bc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710403014607:android:7ba691b121bcb399c69cba",
+        "android_client_info": {
+          "package_name": "com.ebenalcazar.xamarinpushnotification"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4G9NmaEIayo7RNH7ZkX3kqNqU3grwAZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
