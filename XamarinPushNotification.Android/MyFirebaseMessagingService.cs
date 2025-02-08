@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.Util;
 using Firebase.Messaging;
+using System.Collections.Generic;
 using Xamarin.Essentials;
 
 namespace XamarinPushNotification.Droid
@@ -15,6 +16,13 @@ namespace XamarinPushNotification.Droid
 
         public override void OnMessageReceived(RemoteMessage message)
         {
+            IDictionary<string, string> MensajeData = message.Data;
+
+            //string Titulo = MensajeData["title"];
+            //string SubTitulo = MensajeData["body"];
+
+            //androidNotification.CrearNotificacionLocal(Titulo, SubTitulo);
+
             Log.Debug(TAG, "From: " + message.From);
             Log.Debug(TAG, "Notification Message Body: " + message.GetNotification().Body);
 
