@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace XamarinPushNotification
 {
@@ -13,6 +7,19 @@ namespace XamarinPushNotification
         public MainPage()
         {
             InitializeComponent();
+
+            //Recibir mensajes en segundo plano y ejecutar acciones
+            MessagingCenter.Subscribe<string>(this, "MensajeFireBase", (value) =>
+            {
+                //ejecutar desde el hilo principal
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    txtMensaje.Text = "Mensaje" + value;
+
+                    //si se quiere dejar de recibir eventos de la suscripcion
+                    //MessagingCenter.Unsubscribe<string>(this, "MensajeFireBase");
+                });
+            });
         }
     }
 }

@@ -4,6 +4,7 @@ using Android.Util;
 using Firebase.Messaging;
 using System.Collections.Generic;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace XamarinPushNotification.Droid
 {
@@ -27,6 +28,10 @@ namespace XamarinPushNotification.Droid
             Log.Debug(TAG, "Notification Message Body: " + message.GetNotification().Body);
 
             androidNotification.CrearNotificacionLocal(message.GetNotification().Title, message.GetNotification().Body);
+
+            //viene de Xamarin.Forms
+            //se recibe en MainPage.xaml.cs
+            MessagingCenter.Send<string>(message.GetNotification().Title, "MensajeFireBase");
         }
 
         public override void OnNewToken(string token)
