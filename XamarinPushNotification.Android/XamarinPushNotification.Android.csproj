@@ -40,6 +40,9 @@
     <BundleAssemblies>false</BundleAssemblies>
     <MandroidI18n />
     <AndroidKeyStore>false</AndroidKeyStore>
+    <AndroidTlsProvider>
+    </AndroidTlsProvider>
+    <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

@@ -1,14 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:XamarinPushNotification" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="XamarinPushNotification.MainPage">
-
+    <ContentPage.Resources>
+    <ResourceDictionary>
+        <local:ImageSourceConverter x:Key="ImageSourceConverter" />
+    </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="App Pepitos S.A.S!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
         <Label Text="" x:Name="txtMensaje"  FontSize="Title" Padding="30,10,30,10"/>
-       
+        <StackLayout Padding="10">
+            <Label Text="Productos Disponibles"
+               FontSize="Large"
+               HorizontalOptions="Center" />
+            <CollectionView ItemsSource="{Binding Products}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="25" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="15" BorderColor="Gray" CornerRadius="10">
+                            <StackLayout>
+                                <!-- Use FFImageLoading CachedImage for better performance -->
+                                
+                                <ffimageloading:CachedImage
+                                    Source="{Binding ImagenUrl, Converter={StaticResource ImageSourceConverter}}"
+                                    DownsampleToViewSize="True" 
+                                    WidthRequest="300" HeightRequest="300"
+                                    RetryCount="3"
+                                    ErrorPlaceholder="error.png" />
+                                    <!--<Image Source="{Binding ImagenUrl, Converter={StaticResource ImageSourceConverter}}" HeightRequest="100" />-->
+                                <Label Text="{Binding Titulo}" FontSize="Medium" />
+                                <Label Text="{Binding Descripcion}" FontSize="Medium" />
+                                <Label Text="{Binding Precio}" FontSize="Small" />
+                                <Button Text="Agregar al Carrito" Command="{Binding AddToCartCommand}" CommandParameter="{Binding}" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>
