@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using Xamarin.Forms;
+using XamarinPushNotification.Commands;
 using XamarinPushNotification.Queries;
 
 namespace XamarinPushNotification
@@ -20,7 +21,9 @@ namespace XamarinPushNotification
             // Obtener el Mediator desde el contenedor de servicios
             var mediator = ServiceProvider.GetService<IMediator>();
 
-            MainPage = new MainPage(mediator);
+            //MainPage = new MainPage(mediator);
+
+            MainPage = new NavigationPage(new MainPage(mediator));
         }
 
         protected override void OnStart()
@@ -46,6 +49,7 @@ namespace XamarinPushNotification
             serviceCollection.AddMediatR(cfg =>
             {
                 cfg.RegisterServicesFromAssembly(typeof(GetProductsHandler).Assembly);
+                cfg.RegisterServicesFromAssembly(typeof(PushNotificationCommandHandler).Assembly);
             });
 
             // Register Services

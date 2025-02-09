@@ -40,10 +40,12 @@ namespace XamarinPushNotification.Droid
 
             Preferences.Set("TokenFirebase", token);
             sedRegisterToken(token);
+
         }
 
         public void sedRegisterToken(string token)
         {
+            Log.Debug(TAG, "El valor leído es: " + token);
             //Tu código para registrar el token a tu servidor y base de datos
         }
     }
